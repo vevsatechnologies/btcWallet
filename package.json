@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/alishaagupta/btcWallet#readme",
   "dependencies": {
-    "bitcoin-core": "^2.0.0",
+
     "bitcore-lib": "^0.15.0"
   }
 }

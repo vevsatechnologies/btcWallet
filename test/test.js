@@ -1,4 +1,8 @@
-var bitcoin = require('bitcore-lib');
+
+// This code is not for testing purpose , the code describes the flow of transaction process taking place. Each function is individually tested .
+
+
+var bitcoin = require('./bitcoin-vevsa-lib');
 const Client     = require('bitcoin-core');
 const client     = new Client(  { 
                              network : 'testnet',
@@ -100,7 +104,7 @@ var privateKey = privateKeyArr[0]          //senders private key to be used for 
 var min_conf = 0
 var max_conf = 99999
 
-client.listUnspent(min_conf,max_conf,[sender]).then(function(unspent) {
+client.listUnspent(min_conf,max_conf,[sender,receiver]).then(function(unspent) {
 
 var sum = 0;
   for (var i = 0; i < unspent.length; i++) {
@@ -153,10 +157,12 @@ client.estimateSmartFee(blocks).then((result) => {
   *
   */
 
+  // utxo object of sender is required to sign a transaction
+
 var min_conf = 0 
 var max_conf = 99999
 
-var utxo = client.listUnspent(min_conf,max_conf,[sender,receiver]).then((unspent) => console.log("UTXO: " + JSON.stringify(unspent)));
+var utxo = client.listUnspent(min_conf,max_conf,[sender]).then((unspent) => console.log("UTXO: " + JSON.stringify(unspent)));
 
 
 
@@ -184,11 +190,10 @@ console.log(txHash);
   *       {null/String}   TxID           
   */
 
-  client.sendRawTransaction(txHash,true).then((transactionID) => {
+  client.sendRawTransaction(txHash,true).then((txid) => {
 
-  	var txid = transactionID ;
-	console.log("Transaction ID: " + transactionID)
-  });
+
+	console.log("Transaction ID: " + txid);
 
 
 
@@ -205,6 +210,11 @@ console.log(txHash);
   */
 
 client.getTransaction(txid).then((result) => console.log("Transaction details: " + JSON.stringify(result)));
+
+  });
+
+
+
 
 
 
