@@ -1,0 +1,26 @@
+{
+  "name": "btcwallet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alishaagupta/btcWallet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alishaagupta/btcWallet/issues"
+  },
+  "homepage": "https://github.com/alishaagupta/btcWallet#readme",
+  "dependencies": {
+    "bitcoin-core": "^2.0.0",
+    "bitcore-lib": "^0.15.0"
+  }
+}
