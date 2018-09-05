@@ -1,6 +1,6 @@
 // set client information in bitcoin.conf file
 
-const Client     = require('./bitcoin-vevsa-lib');
+const Client     = require('bitcoin-core');
 const client     = new Client(  { 
                              network : 'testnet',
                              port    : 18332,
